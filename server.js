@@ -16,8 +16,7 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-    console.error('Missing Supabase credentials in .env file!');
-    process.exit(1);
+    console.warn('WARNING: Missing Supabase credentials in environment variables! Ensure they are set in Vercel Project Settings.');
 }
 
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -116,6 +115,11 @@ app.post('/api/book-multiple', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Supabase Server listening on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Supabase Server listening on port ${PORT}`);
+    });
+}
+
+// Export the Express API for Vercel
+module.exports = app;
