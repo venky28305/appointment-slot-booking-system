@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+    <div class="bg-shape shape-4"></div>
+
+    <div class="dashboard-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar-card glass-card">
+            <div class="sidebar-header">
+                <h2>Select a Date</h2>
+                <p>Choose your preferred day for the<br>appointment.</p>
+            </div>
+            
+            <div class="date-input-wrapper">
+                <input type="date" id="date-input" min="" required />
+            </div>
+        </aside>
+
+        <!-- Right Main Area -->
+        <main class="main-card glass-card">
+            <div class="main-header">
+                <h2>Available Times</h2>
+                <p id="selected-date-display">Select a date...</p>
+            </div>
+
+            <div class="slots-container" id="slots-container">
+                <div class="loading-state">Please select a date to view available slots.</div>
+            </div>
+            
+            <!-- Sticky Footer for Action -->
+            <div id="action-footer" class="action-footer hidden">
+                <button id="book-multiple-btn" class="btn primary">Book Selected (0)</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
